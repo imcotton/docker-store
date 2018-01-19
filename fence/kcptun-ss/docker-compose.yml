@@ -1,0 +1,66 @@
+version: "3"
+
+services:
+
+  ss-server:
+    image: easypi/shadowsocks-libev
+    environment:
+      - SERVER_PORT=${SSL_PORT_R}
+      - METHOD=${SSL_METHOD}
+      - PASSWORD=${PASSWORD}
+    ports:
+      - ${SSL_PORT_R}:${SSL_PORT_R}
+    restart: always
+
+
+  server:
+    image: xtaci/kcptun
+    ports:
+      - ${KCP_PORT_R}:${KCP_PORT_R}/udp
+    command:
+      server
+        -t ss-server:${SSL_PORT_R}
+        -l :${KCP_PORT_R}
+        --crypt ${KCP_CRYPT}
+        --mode ${KCP_MODE}
+        --sndwnd ${KCP_SND}
+        --key ${PASSWORD}
+    depends_on:
+      - ss-server
+    restart: always
+
+
+  client:
+    image: xtaci/kcptun
+    ports:
+      - ${KCP_PORT_C}:${KCP_PORT_C}
+    command:
+      client
+        -r ${ENDPOINT}:${KCP_PORT_R}
+        -l :${KCP_PORT_C}
+        --crypt ${KCP_CRYPT}
+        --mode ${KCP_MODE}
+        --key ${PASSWORD}
+        --rcvwnd ${KCP_RCV}
+        --log /dev/null
+        &
+
+
+  ss-client:
+    image: easypi/shadowsocks-libev
+    depends_on:
+      - client
+    command:
+      ss-local
+        -s client
+        -p ${KCP_PORT_C}
+        -m ${SSL_METHOD}
+        -k ${PASSWORD}
+        -b 0.0.0.0
+        -l ${SSL_PORT_C}
+        -t 60
+        --fast-open
+    ports:
+      - ${SSL_PORT_C}:${SSL_PORT_C}
+    restart: always
+
