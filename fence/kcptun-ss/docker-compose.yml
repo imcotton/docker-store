@@ -64,3 +64,20 @@ services:
         --fast-open
     restart: always
 
+
+  ss-client:
+    image: shadowsocks/shadowsocks-libev
+    ports:
+      - ${SSL_PORT_C}:${SSL_PORT_C}
+    command:
+      ss-local
+        -s ${ENDPOINT}
+        -p ${SSL_PORT_R}
+        -m ${SSL_METHOD}
+        -k ${PASSWORD}
+        -b 0.0.0.0
+        -l ${SSL_PORT_C}
+        -t 60
+        --fast-open
+    restart: always
+
