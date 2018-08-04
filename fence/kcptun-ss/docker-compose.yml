@@ -3,7 +3,7 @@ version: "3"
 services:
 
   ss-server:
-    image: easypi/shadowsocks-libev
+    image: shadowsocks/shadowsocks-libev
     ports:
       - ${SSL_PORT_R}:${SSL_PORT_R}
     environment:
@@ -47,7 +47,7 @@ services:
 
 
   client:
-    image: easypi/shadowsocks-libev
+    image: shadowsocks/shadowsocks-libev
     ports:
       - ${SSL_PORT_C}:${SSL_PORT_C}
     depends_on:
