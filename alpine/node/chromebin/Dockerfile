@@ -10,12 +10,12 @@ LABEL description="Node.js v8 with CHROME_BIN based on Alpine distro"
 
 RUN echo start \
 \
-    && EDGE='http://dl-cdn.alpinelinux.org/alpine/edge' \
+    && EDGE='http://dl-cdn.alpinelinux.org/alpine/v3.8' \
     && REPO='/etc/apk/repositories' \
 \
     && echo "$EDGE/main" >> $REPO \
     && echo "$EDGE/community" >> $REPO \
-    && sed -i 's#http\://dl-cdn.alpinelinux.org#https\://alpine.global.ssl.fastly.net#g' $REPO \
+    && sed -i 's|http://dl-cdn.alpinelinux.org|https://alpine.global.ssl.fastly.net|g' $REPO \
 \
     && apk add --no-cache --virtual .build-deps \
             curl           \

@@ -31,7 +31,7 @@ ARG MIRROR
 
 RUN echo start \
 \
-    && EDGE='http://dl-cdn.alpinelinux.org/alpine/edge' \
+    && EDGE='http://dl-cdn.alpinelinux.org/alpine/v3.8' \
     && REPO='/etc/apk/repositories' \
 \
     && echo "$EDGE/main" >> $REPO \
