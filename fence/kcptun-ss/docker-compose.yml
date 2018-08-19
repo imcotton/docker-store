@@ -3,7 +3,7 @@ version: "3"
 services:
 
   ss-server:
-    image: shadowsocks/shadowsocks-libev
+    image: ${SSL_IMAGE}
     ports:
       - ${SSL_PORT_R}:${SSL_PORT_R}
     environment:
@@ -14,7 +14,7 @@ services:
 
 
   server:
-    image: xtaci/kcptun
+    image: ${KCP_IMAGE}
     ports:
       - ${KCP_PORT_R}:${KCP_PORT_R}/udp
     depends_on:
@@ -31,7 +31,7 @@ services:
 
 
   kcp-client:
-    image: xtaci/kcptun
+    image: ${KCP_IMAGE}
     ports:
       - ${KCP_PORT_C}:${KCP_PORT_C}
     command:
@@ -47,7 +47,7 @@ services:
 
 
   client:
-    image: shadowsocks/shadowsocks-libev
+    image: ${SSL_IMAGE}
     ports:
       - ${SSL_PORT_C}:${SSL_PORT_C}
     depends_on:
@@ -66,7 +66,7 @@ services:
 
 
   ss-client:
-    image: shadowsocks/shadowsocks-libev
+    image: ${SSL_IMAGE}
     ports:
       - ${SSL_PORT_C}:${SSL_PORT_C}
     command:
