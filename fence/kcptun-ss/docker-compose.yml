@@ -6,10 +6,15 @@ services:
     image: ${SSL_IMAGE}
     ports:
       - ${SSL_PORT_R}:${SSL_PORT_R}
-    environment:
-      - SERVER_PORT=${SSL_PORT_R}
-      - METHOD=${SSL_METHOD}
-      - PASSWORD=${PASSWORD}
+    command:
+      ss-server
+        -s 0.0.0.0
+        -p ${SSL_PORT_R}
+        -k ${PASSWORD}
+        -m ${SSL_METHOD}
+        -t 300
+        --fast-open
+        -u
     restart: always
 
 
