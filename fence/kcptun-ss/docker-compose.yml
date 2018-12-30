@@ -33,6 +33,7 @@ services:
         --sndwnd ${KCP_SND}
         --rcvwnd ${KCP_RCV}
         --key ${PASSWORD}
+        --quiet
     restart: always
 
 
