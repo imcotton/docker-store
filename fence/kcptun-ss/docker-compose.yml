@@ -31,6 +31,7 @@ services:
         --crypt ${KCP_CRYPT}
         --mode ${KCP_MODE}
         --sndwnd ${KCP_SND}
+        --rcvwnd ${KCP_RCV}
         --key ${PASSWORD}
     restart: always
 
@@ -46,6 +47,7 @@ services:
         --crypt ${KCP_CRYPT}
         --mode ${KCP_MODE}
         --key ${PASSWORD}
+        --sndwnd ${KCP_SND}
         --rcvwnd ${KCP_RCV}
         --log /dev/null
         &
