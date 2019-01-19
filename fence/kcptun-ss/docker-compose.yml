@@ -49,11 +49,10 @@ services:
         --crypt ${KCP_CRYPT}
         --mode ${KCP_MODE}
         --dscp ${KCP_DSCP}
-        --key ${PASSWORD}
         --sndwnd ${KCP_SND}
         --rcvwnd ${KCP_RCV}
+        --key ${PASSWORD}
         --quiet
-        &
 
 
   client:
