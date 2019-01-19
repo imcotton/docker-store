@@ -31,7 +31,7 @@ services:
         --crypt ${KCP_CRYPT}
         --mode ${KCP_MODE}
         --dscp ${KCP_DSCP}
-        --sndwnd ${KCP_SND}
+        --sndwnd ${KCP_RCV}
         --rcvwnd ${KCP_RCV}
         --key ${PASSWORD}
         --quiet
