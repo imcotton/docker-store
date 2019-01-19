@@ -30,6 +30,7 @@ services:
         -l :${KCP_PORT_R}
         --crypt ${KCP_CRYPT}
         --mode ${KCP_MODE}
+        --dscp ${KCP_DSCP}
         --sndwnd ${KCP_SND}
         --rcvwnd ${KCP_RCV}
         --key ${PASSWORD}
@@ -47,6 +48,7 @@ services:
         -l :${KCP_PORT_C}
         --crypt ${KCP_CRYPT}
         --mode ${KCP_MODE}
+        --dscp ${KCP_DSCP}
         --key ${PASSWORD}
         --sndwnd ${KCP_SND}
         --rcvwnd ${KCP_RCV}
