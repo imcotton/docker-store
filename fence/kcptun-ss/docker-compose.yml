@@ -52,7 +52,7 @@ services:
         --key ${PASSWORD}
         --sndwnd ${KCP_SND}
         --rcvwnd ${KCP_RCV}
-        --log /dev/null
+        --quiet
         &
 
 
