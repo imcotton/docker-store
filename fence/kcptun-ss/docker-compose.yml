@@ -13,7 +13,6 @@ services:
         -k ${PASSWORD}
         -m ${SSL_METHOD}
         -t 300
-        --fast-open
         -u
     restart: always
 
@@ -70,7 +69,6 @@ services:
         -b 0.0.0.0
         -l ${SSL_PORT_C}
         -t 60
-        --fast-open
     restart: always
 
 
