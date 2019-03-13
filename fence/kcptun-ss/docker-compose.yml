@@ -88,3 +88,8 @@ services:
         --fast-open
     restart: always
 
+
+networks:
+  default:
+    name: kcp-ss
+
