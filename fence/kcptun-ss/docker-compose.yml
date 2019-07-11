@@ -85,7 +85,6 @@ services:
         -b 0.0.0.0
         -l ${SSL_PORT_C}
         -t 60
-        --fast-open
     restart: always
 
 
