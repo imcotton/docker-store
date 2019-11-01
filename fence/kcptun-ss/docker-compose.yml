@@ -6,6 +6,7 @@ services:
     image: ${SSL_IMAGE}
     ports:
       - ${SSL_PORT_R}:${SSL_PORT_R}
+      - ${SSL_PORT_R}:${SSL_PORT_R}/udp
     command:
       ss-server
         -s 0.0.0.0
